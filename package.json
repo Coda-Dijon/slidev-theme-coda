@@ -1,6 +1,7 @@
 {
-  "name": "slidev-theme-coda",
-  "version": "0.0.0",
+  "name": "Coda-Dijon@slidev-theme-coda",
+  "repository": "https://github.com/Coda-Dijon/slidev-theme-coda.git",
+  "version": "0.0.1",
   "type": "module",
   "keywords": [
     "slidev-theme",

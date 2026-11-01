@@ -40,7 +40,7 @@ Ajouter le frontmatter suivant à votre `slides.md`. Démarrer Slidev et il vous
 
 ````md
 ---
-theme: coda
+theme: "@coda-dijon/slidev-theme-coda"
 ---
 ````
 

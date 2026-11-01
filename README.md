@@ -1,37 +1,52 @@
 # slidev-theme-coda
 
-[![NPM version](https://img.shields.io/npm/v/slidev-theme-coda?color=3AB9D4&label=)](https://www.npmjs.com/package/slidev-theme-coda)
 
 Un thème aux couleurs de Coda pour [Slidev](https://github.com/slidevjs/slidev).
 
-<!--
-  Learn more about how to write a theme:
-  https://sli.dev/guide/write-theme.html
---->
+## Installer en dépendance npm
 
-<!--
-  run `npm run dev` to check out the slides for more details of how to start writing a theme
--->
+Ce thème est sauvegardé sur le registry npm de github.
+Créer ou modifier un fichier `.npmrc`
+```
+@coda-dijon:registry=https://npm.pkg.github.com
+```
 
-<!--
-  Put some screenshots here to demonstrate your theme
+[Dans Github](https://github.com/settings/tokens/new), créer un Personal Access Token (PAT) classic et lui assigner uniquement la permission : `read:packages`. Copier ce token et le conserver en lieu sûr.
 
-  Live demo: [...]
--->
+Se connecter au registre npm de github
 
-## Install
+```shell
+npm login --registry https://npm.pkg.github.com
+```
 
-Add the following frontmatter to your `slides.md`. Start Slidev then it will prompt you to install the theme automatically.
+Voici à quoi devrait ressembler le login en succès :
+```
+npm notice Log in on https://npm.pkg.github.com/
+Username:                  # votre username github
+Password:                  # le PAT (personal access Token)
+Logged in on https://npm.pkg.github.com/.
+```
 
-<pre><code>---
-theme: <b>coda</b>
----</code></pre>
+Vous pouvez maintenant installer le thème
+```shell
+npm install @coda-dijon/slidev-theme-coda@latest
+```
 
-Learn more about [how to use a theme](https://sli.dev/guide/theme-addon#use-theme).
+## Utiliser le thème dans une présentation sli.dev
+
+Ajouter le frontmatter suivant à votre `slides.md`. Démarrer Slidev et il vous sera demandé de l'installer automatiquemetn.
+
+````md
+---
+theme: coda
+---
+````
+
+Pour en savoir plus sur [comment utiliser un thème](https://sli.dev/guide/theme-addon#use-theme).
 
 ## Layouts
 
-This theme provides the following layouts:
+Ce thème fournit les layouts :
 
 - `section`
 
@@ -109,12 +124,3 @@ Crédit de source en bas de slide.
 ```vue
 <Sticker color="magenta" rotate="-2">À retenir</Sticker>
 ```
-
-
-## Contributing
-
-- `npm install`
-- `npm run dev` to start theme preview of `example.md`
-- Edit the `example.md` and style to see the changes
-- `npm run export` to generate the preview PDF
-- `npm run screenshot` to generate the preview PNG

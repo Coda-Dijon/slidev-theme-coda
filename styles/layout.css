@@ -1,0 +1,445 @@
+/* ============================================================
+   Thème neobrutal sobre, palette Coda
+   Bordures franches et ombres portées dures, mais une palette
+   retenue : fond blanc cassé, encre navy, teintes pastel pour
+   les cartes et un seul accent vif, le lime Coda.
+
+   Accessibilité : chaque couleur de fond a une couleur de texte
+   associée (--nb-on-*) qui respecte WCAG AA (≥ 4,5:1).
+     paper    + navy   18,2:1
+     lime     + navy   17,5:1   (teinte)
+     magenta  + navy   15,4:1   (teinte rose)
+     blue     + navy   15,6:1   (teinte)
+     lavender + navy   15,6:1   (teinte)
+     violet   + blanc  14,9:1   (violet profond Coda)
+     navy     + blanc  19,7:1
+   L'accent lime pur (#ddf849) est invisible sur fond clair (1,1:1) :
+   il n'est jamais utilisé seul, toujours cerné de navy ou sur fond navy.
+   ============================================================ */
+
+:root {
+    /* Palette Coda, version sobre */
+    --nb-navy: #080331;
+    --nb-deep: #18095a;
+    --nb-accent: #ddf849;
+    --nb-lime: #eef8b4;
+    --nb-magenta: #f8dcef;
+    --nb-violet: #2a1668;
+    --nb-blue: #dfe4ff;
+    --nb-lavender: #e7e2f6;
+    --nb-white: #ffffff;
+    --nb-link: #4b00eb;
+
+    /* Couleur de texte associée à chaque fond */
+    --nb-on-navy: var(--nb-white);
+    --nb-on-deep: var(--nb-white);
+    --nb-on-lime: var(--nb-navy);
+    --nb-on-magenta: var(--nb-navy);
+    --nb-on-violet: var(--nb-white);
+    --nb-on-blue: var(--nb-navy);
+    --nb-on-lavender: var(--nb-navy);
+    --nb-on-white: var(--nb-navy);
+
+    /* Rôles */
+    --nb-ink: var(--nb-navy);
+    --nb-paper: #f7f6f2;
+
+    --nb-border: 2.5px solid var(--nb-ink);
+    --nb-shadow: 4px 4px 0 var(--nb-ink);
+    --nb-shadow-sm: 2px 2px 0 var(--nb-ink);
+    --nb-radius: 0px;
+
+    --slidev-theme-primary: var(--nb-navy);
+
+    /* Alertes (callouts) */
+    --color-tip: #007e12;
+    --color-note: #0046aa;
+    --color-important: #5200db;
+    --color-warning: #9b6300;
+    --color-caution: #a10700;
+}
+
+/* ---------- Base ---------- */
+
+.slidev-layout {
+    background: var(--nb-paper);
+    color: var(--nb-ink);
+    font-family: 'Space Grotesk', ui-sans-serif, system-ui, sans-serif;
+    padding: 2.5rem 3.5rem;
+}
+
+/* ---------- Couples fond / texte ----------
+   Déclarés après .slidev-layout pour pouvoir colorer un layout entier */
+
+.nb-fill-navy {
+    background: var(--nb-navy);
+    color: var(--nb-on-navy);
+}
+
+.nb-fill-deep {
+    background: var(--nb-deep);
+    color: var(--nb-on-deep);
+}
+
+.nb-fill-lime {
+    background: var(--nb-lime);
+    color: var(--nb-on-lime);
+}
+
+.nb-fill-magenta {
+    background: var(--nb-magenta);
+    color: var(--nb-on-magenta);
+}
+
+.nb-fill-violet {
+    background: var(--nb-violet);
+    color: var(--nb-on-violet);
+}
+
+.nb-fill-blue {
+    background: var(--nb-blue);
+    color: var(--nb-on-blue);
+}
+
+.nb-fill-lavender {
+    background: var(--nb-lavender);
+    color: var(--nb-on-lavender);
+}
+
+.nb-fill-white {
+    background: var(--nb-white);
+    color: var(--nb-on-white);
+}
+
+/* Les titres et le code inline héritent de la couleur du fond */
+[class*='nb-fill-'] :is(h1, h2, h3, p, li) {
+    color: inherit;
+}
+
+/* Dans un aplat, le surlignage lime devient un soulignement épais */
+.slidev-layout [class*='nb-fill-'] strong {
+    background: none;
+    color: inherit;
+    text-decoration: underline;
+    text-decoration-thickness: 2px;
+    text-underline-offset: 3px;
+}
+
+/* Sur fond clair, les cartes gardent le surlignage lime */
+.slidev-layout :is(.nb-fill-white, .nb-fill-lime, .nb-fill-blue, .nb-fill-lavender, .nb-fill-magenta) strong {
+    background: linear-gradient(transparent 60%, var(--nb-accent) 60%);
+    text-decoration: none;
+}
+
+.slidev-layout h1,
+.slidev-layout h2,
+.slidev-layout h3 {
+    font-family: 'Archivo Black', 'Space Grotesk', sans-serif;
+    color: var(--nb-ink);
+    letter-spacing: -0.01em;
+    line-height: 1.05;
+}
+
+/* Titre sans boîte : un trait lime cerné de navy en dessous */
+.slidev-layout h1 {
+    font-size: 2.3rem;
+    margin-bottom: 1.4rem;
+    color: var(--nb-ink);
+    position: relative;
+    padding-bottom: 0.9rem;
+}
+
+.slidev-layout h1::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 4rem;
+    height: 0.55rem;
+    background: var(--nb-accent);
+    border: 2px solid var(--nb-ink);
+}
+
+/* Le thème par défaut grise le paragraphe qui suit un h1 */
+.slidev-layout h1 + p {
+    opacity: 1;
+}
+
+.slidev-layout h2 {
+    font-size: 1.6rem;
+    margin: 1rem 0 0.6rem;
+}
+
+.slidev-layout h3 {
+    font-size: 1.15rem;
+    margin: 0.8rem 0 0.4rem;
+}
+
+.slidev-layout p,
+.slidev-layout li {
+    font-size: 1.15rem;
+    line-height: 1.5;
+}
+
+/* Surlignage lime : le texte reste navy, contraste 16,5:1 */
+.slidev-layout strong {
+    background: linear-gradient(transparent 60%, var(--nb-accent) 60%);
+    color: var(--nb-navy);
+    font-weight: 700;
+}
+
+.slidev-layout a {
+    color: inherit;
+    text-decoration: underline;
+    text-decoration-thickness: 3px;
+    text-decoration-color: var(--nb-link);
+    text-underline-offset: 3px;
+}
+
+.slidev-layout ul {
+    list-style: none;
+    padding-left: 0;
+}
+
+.slidev-layout ul > li {
+    position: relative;
+    padding-left: 1.6rem;
+    margin: 0.35rem 0;
+}
+
+.slidev-layout ul > li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 0.45em;
+    width: 0.55rem;
+    height: 0.55rem;
+    background: currentColor;
+}
+
+.slidev-layout ol {
+    padding-left: 1.4rem;
+}
+
+.slidev-layout ol > li::marker {
+    font-family: 'Archivo Black', sans-serif;
+}
+
+/* ---------- Blockquote ---------- */
+
+.slidev-layout blockquote {
+    background: var(--nb-white);
+    color: var(--nb-navy);
+    border: var(--nb-border);
+    border-left: 10px solid var(--nb-ink);
+    box-shadow: var(--nb-shadow);
+    padding: 0.8rem 1.2rem;
+    margin-top: 1.2rem;
+    font-size: 1.1rem;
+    font-weight: 600;
+}
+
+.slidev-layout blockquote p {
+    font-size: inherit;
+    color: inherit;
+}
+
+/* ---------- Code ---------- */
+
+.slidev-layout pre,
+.slidev-layout .slidev-code {
+    border: var(--nb-border) !important;
+    box-shadow: var(--nb-shadow) !important;
+    border-radius: var(--nb-radius) !important;
+}
+
+.slidev-layout :not(pre) > code {
+    font-family: 'JetBrains Mono', monospace;
+    background: var(--nb-white);
+    color: var(--nb-navy);
+    border: 2px solid var(--nb-ink);
+    padding: 0.05rem 0.35rem;
+    font-size: 0.9em;
+}
+
+/* ---------- Tableaux ---------- */
+
+.slidev-layout table {
+    border-collapse: separate;
+    border-spacing: 0;
+    border: var(--nb-border);
+    box-shadow: var(--nb-shadow);
+    background: var(--nb-white);
+    color: var(--nb-navy);
+    width: 100%;
+}
+
+.slidev-layout th {
+    background: var(--nb-navy);
+    color: var(--nb-on-navy);
+    font-family: 'Archivo Black', sans-serif;
+    font-weight: 400;
+    text-align: left;
+    border-bottom: var(--nb-border);
+}
+
+.slidev-layout th,
+.slidev-layout td {
+    padding: 0.5rem 0.8rem;
+}
+
+.slidev-layout tr:not(:last-child) td {
+    border-bottom: 1px solid var(--nb-lavender);
+}
+
+/* ---------- Layout cover : fond navy Coda ---------- */
+
+.slidev-layout.cover {
+    background: var(--nb-navy);
+    color: var(--nb-on-navy);
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.slidev-layout.cover h1 {
+    font-size: 3.6rem;
+    color: var(--nb-white);
+}
+
+.slidev-layout.cover h1::after {
+    width: 6rem;
+    border-color: var(--nb-accent);
+}
+
+.slidev-layout.cover p {
+    font-size: 1.4rem;
+    font-weight: 600;
+    color: var(--nb-on-navy);
+}
+
+/* Sur fond navy, les bordures et ombres passent en blanc */
+.slidev-layout.cover .nb-sticker {
+    border-color: var(--nb-white);
+    box-shadow: none;
+}
+
+/* ---------- Layout center / statement ---------- */
+
+.slidev-layout.statement {
+    text-align: center;
+    height: 100%;
+    display: grid;
+}
+
+.slidev-layout.statement h1 {
+    font-size: 3rem;
+    font-weight: 700;
+    line-height: 1;
+}
+
+.slidev-layout.statement h1::after {
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* ---------- Utilitaires ---------- */
+
+.nb-box {
+    background: var(--nb-white);
+    border: var(--nb-border);
+    box-shadow: var(--nb-shadow);
+    padding: 1rem 1.2rem;
+}
+
+.nb-grid-2 {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+}
+
+.nb-grid-3 {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 1.5rem;
+}
+
+/* Texte + image côte à côte */
+.nb-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: start;
+}
+
+.nb-split-l {
+    grid-template-columns: 3fr 2fr;
+}
+
+.nb-split-r {
+    grid-template-columns: 2fr 3fr;
+}
+
+.nb-small p,
+.nb-small li {
+    font-size: 0.95rem;
+    line-height: 1.4;
+}
+
+.nb-small th,
+.nb-small td {
+    font-size: 0.85rem;
+    padding: 0.3rem 0.6rem;
+}
+
+.nb-tight th,
+.nb-tight td {
+    padding: 0.2rem 0.6rem;
+}
+
+/* Texte réservé aux lecteurs d'écran */
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    overflow: hidden;
+    clip: rect(0 0 0 0);
+    white-space: nowrap;
+}
+
+.nb-center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.nb-tilt-l {
+    transform: rotate(-0.6deg);
+}
+
+.nb-tilt-r {
+    transform: rotate(0.6deg);
+}
+
+/* ---------- Accessibilité ---------- */
+
+/* Pas d'animation pour qui l'a demandé au système */
+@media (prefers-reduced-motion: reduce) {
+    * {
+        transition: none !important;
+        animation: none !important;
+    }
+}
+
+/* ---------- Barre de navigation Slidev ---------- */
+
+.slidev-nav-controls,
+#slidev-goto-dialog {
+    border: var(--nb-border) !important;
+    border-radius: 0 !important;
+}
+
+/* ----------- Alertes ---------- */
+.markdown-alert {
+    background-color: var(--nb-paper);
+}

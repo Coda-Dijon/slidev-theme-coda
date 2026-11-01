@@ -1,0 +1,39 @@
+{
+  "name": "slidev-theme-coda",
+  "version": "0.0.0",
+  "type": "module",
+  "keywords": [
+    "slidev-theme",
+    "slidev"
+  ],
+  "engines": {
+    "node": ">=22.12.0"
+  },
+  "scripts": {
+    "build": "slidev build example.md",
+    "dev": "slidev example.md --open",
+    "export": "slidev export example.md",
+    "screenshot": "slidev export example.md --format png"
+  },
+  "dependencies": {
+    "@slidev/types": "^53.0.0"
+  },
+  "devDependencies": {
+    "@slidev/cli": "^53.0.0"
+  },
+  "//": "Learn more: https://sli.dev/guide/write-theme.html",
+  "slidev": {
+    "colorSchema": "both",
+    "defaults": {
+      "fonts": {
+        "sans": "Space Grotesk",
+        "serif": "Archivo Black",
+        "mono": "JetBrains Mono",
+        "weights": "400,600,700"
+      }
+    }
+  },
+  "allowScripts": {
+    "fsevents@2.3.3": true
+  }
+}

@@ -1,5 +1,5 @@
 {
-  "name": "slidev-theme-coda",
+  "name": "@coda-dijon/slidev-theme-coda",
   "repository": {
     "url": "git+https://github.com/Coda-Dijon/slidev-theme-coda.git"
   },
@@ -7,7 +7,7 @@
     "registry": "https://npm.pkg.github.com"
   },
   "description": "Thème aux couleurs de Coda pour le générateur de présentations sli.dev",
-  "version": "0.0.1",
+  "version": "0.0.3",
   "type": "module",
   "keywords": [
     "slidev-theme",

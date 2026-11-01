@@ -29,6 +29,8 @@ Logged in on https://npm.pkg.github.com/.
 
 Vous pouvez maintenant installer le thème
 ```shell
+# Le thème Coda a besoin du thème par défaut pour fonctionner
+npm install @slidev/theme-default
 npm install @coda-dijon/slidev-theme-coda@latest
 ```
 

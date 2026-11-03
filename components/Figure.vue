@@ -8,6 +8,7 @@ const props = defineProps<{
   caption?: string
   h?: string
   bare?: boolean
+  ariaDescribedby?: string
   tilt?: 'l' | 'r'
 }>()
 
@@ -19,7 +20,9 @@ const resolvedSrc = props.src.startsWith('/')
 
 <template>
   <figure class="nb-figure" :class="[{ 'is-bare': props.bare }, props.tilt ? `nb-tilt-${props.tilt}` : '']">
-    <img :src="resolvedSrc" :alt="props.alt" :style="{ maxHeight: props.h ?? '20rem' }" loading="lazy">
+    <img :src="resolvedSrc" :alt="props.alt" :style="{ maxHeight: props.h ?? '20rem' }" loading="lazy"
+        :aria-describedby="ariaDescribedby"
+    >
     <figcaption v-if="props.caption">{{ props.caption }}</figcaption>
   </figure>
 </template>
